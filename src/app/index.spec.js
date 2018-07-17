@@ -2,8 +2,8 @@ import React from "react";
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme';
 
-import store from './store'
-import App from './app'
+import store from '../store'
+import App from './index'
 
 function mountWithStore (Component) {
 	return mount(<Provider store={store}><Component /></Provider>)
