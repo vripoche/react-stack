@@ -1,9 +1,4 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-
-const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
-});
+const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
   module: {
@@ -35,5 +30,14 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlWebpackPlugin]
-};
+  plugins: [
+		new HtmlWebPackPlugin({template: "./src/index.html", filename: "./index.html"})
+	],
+  devServer: {
+    before: function(app) {
+      app.get('/label', function(req, res) {
+        res.json({ label: 'Fetched!' })
+      })
+    }
+  }
+}

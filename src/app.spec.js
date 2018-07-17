@@ -14,10 +14,19 @@ describe('App', () => {
 
 	beforeEach(() => {
 		wrapper = mountWithStore(App)
+
+		window.fetch = jest.fn().mockImplementation(() => ({json: () => ({label: 'Mocked!'})}))
 	})
 
 	it('should be loaded', () => {
 		expect(wrapper.text())
 			.toEqual('Loaded!')
+	})
+
+	it('should fetch on click', () => {
+		wrapper.simulate('click')
+
+		expect(wrapper.text())
+			.toEqual('Mocked!')
 	})
 })

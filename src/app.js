@@ -5,11 +5,19 @@ import { connect } from 'react-redux'
 import * as actionCreator from './action'
 
 class App extends Component {
-	componentDidMount() {
+	constructor (props) {
+		super(props)
+
+		this.onClick = this.onClick.bind(this)
+	}
+	componentDidMount () {
 		this.props.load('Loaded!')
 	}
-	render() {
-  	return <div>{this.props.label}</div>
+	onClick () {
+		this.props.fetch()
+	}
+	render () {
+  	return <div onClick={this.onClick}>{this.props.label}</div>
 	}
 }
 
