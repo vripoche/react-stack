@@ -9,13 +9,29 @@ function mountWithStore (Component) {
 	return mount(<Provider store={store}><Component /></Provider>)
 }
 
+function mockFetch (list) {
+	let mock = jest.fn()
+
+	list.forEach((item) => {
+		if (item.response) {
+			mock = mock.mockImplementation(() => ({json: () => (item.response)}))
+		}
+		if (item.error) {
+			mock = mock.mockImplementation(() => {
+				throw item.error
+			})
+		}
+	})
+
+	window.fetch = mock
+}
+
 describe('App', () => {
 	let wrapper
 
 	beforeEach(() => {
 		wrapper = mountWithStore(App)
 
-		window.fetch = jest.fn().mockImplementation(() => ({json: () => ({label: 'Mocked!'})}))
 	})
 
 	it('should be loaded', () => {
@@ -24,6 +40,8 @@ describe('App', () => {
 	})
 
 	it('should fetch on click', () => {
+		mockFetch([{response: {label: 'Mocked!'}}])
+
 		wrapper.simulate('click')
 
 		expect(wrapper.text())
