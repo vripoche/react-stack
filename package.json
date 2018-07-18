@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "test": "jest",
-    "watch": "jest --watch"
+    "test": "jest --clearMocks",
+    "watch": "jest --clearMocks --watch"
   },
   "author": "vripoche",
 	"license": "ISC",
