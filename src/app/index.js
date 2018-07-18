@@ -13,6 +13,9 @@ class App extends Component {
 	componentDidMount () {
 		this.props.load('Loaded!')
 	}
+  componentDidUpdate () {
+    if (this.props.errorMessage) alert(this.props.errorMessage)
+  }
 	onClick () {
 		this.props.fetch()
 	}
@@ -22,9 +25,7 @@ class App extends Component {
 }
 
 function mapStateToProps (state) {
-	return {
-		label: state.app.label
-	}
+	return {...state.app}
 }
 
 function mapDispatchToProps (dispatch) {

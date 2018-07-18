@@ -47,4 +47,15 @@ describe('App', () => {
 		expect(wrapper.text())
 			.toEqual('Mocked!')
 	})
+
+  it('should alert if error', () => {
+    jest.spyOn(window, 'alert').mockImplementation(jest.fn)
+
+		mockFetch([{error: new Error('Error!')}])
+
+		wrapper.simulate('click')
+
+    expect(window.alert.mock.calls[0][0])
+      .toEqual('Error!')
+  })
 })
