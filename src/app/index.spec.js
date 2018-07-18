@@ -48,14 +48,18 @@ describe('App', () => {
 			.toEqual('Mocked!')
 	})
 
-  it('should alert if error', () => {
+  it('should alert if error (twice)', () => {
     jest.spyOn(window, 'alert').mockImplementation(jest.fn)
 
 		mockFetch([{error: new Error('Error!')}])
 
 		wrapper.simulate('click')
+		wrapper.simulate('click')
 
     expect(window.alert.mock.calls[0][0])
+      .toEqual('Error!')
+
+    expect(window.alert.mock.calls[1][0])
       .toEqual('Error!')
   })
 })

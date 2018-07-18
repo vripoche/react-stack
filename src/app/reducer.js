@@ -1,4 +1,4 @@
-import { LOAD, FETCH_SUCCEEDED, FETCH_FAILED } from './action'
+import { LOAD, FETCH, FETCH_SUCCEEDED, FETCH_FAILED } from './action'
 
 const initialState = {
 	label: '',
@@ -9,12 +9,12 @@ export default function (state = initialState, action) {
 	switch(action.type) {
 		case LOAD:
 		case FETCH_SUCCEEDED:
-			const {label} = action
+			const {label = ''} = action
 			return {...state, ...initialState, label}
 		case FETCH_FAILED:
 			const {message} = action
 			return {...state, errorMessage: message}
 		default:
-			return state
+			return {...state, errorMessage: undefined}
 	}
 }
