@@ -10,10 +10,13 @@
     "watch": "jest --clearMocks --watch"
   },
   "author": "vripoche",
-	"license": "ISC",
-	"jest": {
-		"setupTestFrameworkScriptFile": "./test-setup.js"
-	},
+  "license": "ISC",
+  "jest": {
+    "setupTestFrameworkScriptFile": "./test-setup.js",
+    "transform": {
+      ".*": "<rootDir>/node_modules/jest-css-modules"
+    }
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.0",
@@ -28,6 +31,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "html-webpack-plugin": "^3.1.0",
     "jest": "^23.4.1",
+    "jest-css-modules": "^1.1.0",
     "regenerator-runtime": "^0.12.0",
     "style-loader": "^0.20.3",
     "webpack": "^4.2.0",

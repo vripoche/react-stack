@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import * as actionCreator from './action'
 
+import style from './index.css'
+
 class App extends Component {
 	constructor (props) {
 		super(props)
@@ -20,7 +22,9 @@ class App extends Component {
 		this.props.fetch()
 	}
 	render () {
-  	return <div onClick={this.onClick}>{this.props.label}</div>
+  	return <div className={style.app} onClick={this.onClick}>
+      <span className={style.label + ' js-label'}>{this.props.label}</span>
+     </div>
 	}
 }
 
