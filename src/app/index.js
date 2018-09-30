@@ -7,18 +7,13 @@ import * as actionCreator from './action'
 import style from './index.css'
 
 class App extends Component {
-	constructor (props) {
-		super(props)
-
-		this.onClick = this.onClick.bind(this)
-	}
 	componentDidMount () {
 		this.props.load('Loaded!')
 	}
   componentDidUpdate () {
     if (this.props.errorMessage) alert(this.props.errorMessage)
   }
-	onClick () {
+	onClick = () => {
 		this.props.fetch()
 	}
 	render () {
