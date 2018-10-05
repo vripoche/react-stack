@@ -34,6 +34,7 @@ module.exports = {
     new HtmlWebPackPlugin({template: './src/index.html', filename: './index.html'})
   ],
   devServer: {
+    historyApiFallback: true,
     before: function(app) {
       app.get('/label', function(req, res) {
         res.json({ label: 'Fetched!' })
