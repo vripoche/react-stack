@@ -7,28 +7,28 @@ import * as actionCreator from './action'
 import style from './index.css'
 
 class App extends Component {
-	componentDidMount () {
-		this.props.load('Loaded!')
-	}
-  componentDidUpdate () {
-    if (this.props.errorMessage) alert(this.props.errorMessage)
-  }
-	onClick = () => {
-		this.props.fetch()
-	}
-	render () {
-  	return <div className={style.app} onClick={this.onClick}>
-      <span className={style.label + ' js-label'}>{this.props.label}</span>
-     </div>
-	}
+    componentDidMount () {
+        this.props.load('Loaded!')
+    }
+    componentDidUpdate () {
+        if (this.props.errorMessage) alert(this.props.errorMessage)
+    }
+    onClick = () => {
+        this.props.fetch()
+    }
+    render () {
+        return <div className={style.app} onClick={this.onClick}>
+            <span className={style.label + ' js-label'}>{this.props.label}</span>
+        </div>
+    }
 }
 
 function mapStateToProps (state) {
-	return {...state.app}
+    return {...state.app}
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({...actionCreator}, dispatch)
+    return bindActionCreators({...actionCreator}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

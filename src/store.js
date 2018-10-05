@@ -9,9 +9,9 @@ import appSaga from './app/saga'
 const sagaMiddleware = createSagaMiddleware()
 
 function * rootSaga () {
-	yield [
-		fork(appSaga)
-	]
+    yield [
+        fork(appSaga)
+    ]
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
