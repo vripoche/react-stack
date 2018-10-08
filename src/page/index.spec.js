@@ -14,10 +14,10 @@ function mockFetch (list) {
 
   list.forEach((item) => {
     if (item.response) {
-      mock = mock.mockImplementation(() => ({json: () => (item.response)}))
+      mock = mock.mockImplementationOnce(() => ({json: () => (item.response)}))
     }
     if (item.error) {
-      mock = mock.mockImplementation(() => {
+      mock = mock.mockImplementationOnce(() => {
         throw item.error
       })
     }
