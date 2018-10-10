@@ -8,13 +8,20 @@ import store from './store'
 import Page from './page'
 
 class App extends Component {
-    render = () => (<Router>
+  render = () => (
+    <Router>
       <div>
         <Link to="/page">Page</Link>
         <hr />
-        <Route path='/page' render={() => (<Page />)} />
+        <Route path="/page" render={() => <Page />} />
       </div>
-    </Router>)
+    </Router>
+  )
 }
 
-render(<Provider store={store}><App /></Provider>, document.getElementById('root'))
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+)
